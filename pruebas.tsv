@@ -1,0 +1,119 @@
+Caso / entrada	Esperado	Obtenido	Estado
+Diagnóstico metropolitano 1.5h	150	150.00	OK
+Diagnóstico periférico 0.5h	225	225.00	OK
+Días diagnóstico metropolitano	1	1	OK
+Días diagnóstico periférico	2	2	OK
+Instalación 2.5h y 5 puntos: techo de 3.75	4	4	OK
+Instalación metropolitana 5 puntos	460	460.00	OK
+Instalación periférica 2.1h: techo de 3	445	445.00	OK
+Días instalación metropolitana	3	3	OK
+Días instalación periférica	5	5	OK
+Certificada: 460+120+5% de 2000	680	680.00	OK
+Certificada periférica: 175+270+120+50	615	615.00	OK
+Días certificada metropolitana	5	5	OK
+Días certificada periférica	7	7	OK
+Aire 1.5h: 100+165+80	345	345.00	OK
+Días mantenimiento	2	2	OK
+Aire máximo BTU válido	60000	60000	OK
+Diagnóstico 1.51h	true	true	OK
+Horas cero	true	true	OK
+Horas negativas	true	true	OK
+Código vacío	true	true	OK
+Cliente vacío	true	true	OK
+Dirección vacía	true	true	OK
+Cero puntos	true	true	OK
+Materiales cero	true	true	OK
+BTU 8999	true	true	OK
+BTU 60001	true	true	OK
+Aire periférico	true	true	OK
+Capacidad cero	true	true	OK
+Semilla: ocho órdenes	8	8	OK
+Semilla: tres cuadrillas	3	3	OK
+Semilla: todas pendientes	true	true	OK
+Semilla sin ingresos	0	0.00	OK
+Cotizar dos veces no registra	8	8	OK
+Cotizar dos veces no cobra	0	0.00	OK
+Registro cobra monto completo	150	150.00	OK
+Registro duplicado	true	true	OK
+Duplicado no cambia cantidad	9	9	OK
+Duplicado no cambia ingresos	150	150.00	OK
+Cuadrilla duplicada	true	true	OK
+Una jornada abierta por cuadrilla	true	true	OK
+Jornada duplicada	true	true	OK
+Jornada sin órdenes no inicia	true	true	OK
+Aire con cuadrilla sin certificado	true	true	OK
+Rechazo conserva orden pendiente	PENDIENTE	PENDIENTE	OK
+Rechazo conserva jornada vacía	0	0	OK
+Capacidad usa 2.5h estimadas, no 4 facturables	5.5	5.5	OK
+Doble asignación	true	true	OK
+Retiro restaura pendiente	PENDIENTE	PENDIENTE	OK
+Retiro restaura capacidad	8	8	OK
+Cotizaciones, retiros y rechazos sin ingresos	150	150.00	OK
+Exceso de capacidad 2.5h > 1.5h	true	true	OK
+Capacidad exacta aceptada	0	0.0	OK
+Resultado antes de iniciar	true	true	OK
+No retirar en curso	true	true	OK
+No asignar en curso	true	true	OK
+No iniciar dos veces	true	true	OK
+Resultado exitoso completa	COMPLETADA	COMPLETADA	OK
+No repetir resultado	true	true	OK
+Completada no se reasigna	true	true	OK
+Primera visita y rechazos no cobran extra	0	0.00	OK
+Resultado parcial mantiene jornada abierta	EN_CURSO	EN_CURSO	OK
+Orden ajena no admite resultado	true	true	OK
+Último resultado cierra jornada	CERRADA	CERRADA	OK
+Reporte contiene ingreso por categoría	true	true	OK
+Reporte excluye jornadas cerradas	false	false	OK
+Diagnóstico asignar visita 1 no cobra	150.00	150.00	OK
+Diagnóstico contador visita 1	1	1	OK
+Diagnóstico ingreso al iniciar visita 1	150.00	150.00	OK
+Diagnóstico resultado fallido 1	PENDIENTE	PENDIENTE	OK
+Diagnóstico jornada cerrada 1	CERRADA	CERRADA	OK
+Diagnóstico asignar visita 2 no cobra	150.00	150.00	OK
+Diagnóstico contador visita 2	2	2	OK
+Diagnóstico ingreso al iniciar visita 2	190.00	190.00	OK
+Diagnóstico resultado fallido 2	PENDIENTE	PENDIENTE	OK
+Diagnóstico jornada cerrada 2	CERRADA	CERRADA	OK
+Diagnóstico asignar visita 3 no cobra	190.00	190.00	OK
+Diagnóstico contador visita 3	3	3	OK
+Diagnóstico ingreso al iniciar visita 3	230.00	230.00	OK
+Diagnóstico resultado fallido 3	CANCELADA	CANCELADA	OK
+Diagnóstico jornada cerrada 3	CERRADA	CERRADA	OK
+Diagnóstico cancelada no se reasigna	true	true	OK
+Diagnóstico rechazo sin cargos	80	80.00	OK
+Instalación asignar visita 1 no cobra	190.00	190.00	OK
+Instalación contador visita 1	1	1	OK
+Instalación ingreso al iniciar visita 1	190.00	190.00	OK
+Instalación resultado fallido 1	PENDIENTE	PENDIENTE	OK
+Instalación jornada cerrada 1	CERRADA	CERRADA	OK
+Instalación asignar visita 2 no cobra	190.00	190.00	OK
+Instalación contador visita 2	2	2	OK
+Instalación ingreso al iniciar visita 2	230.00	230.00	OK
+Instalación resultado fallido 2	PENDIENTE	PENDIENTE	OK
+Instalación jornada cerrada 2	CERRADA	CERRADA	OK
+Instalación asignar visita 3 no cobra	230.00	230.00	OK
+Instalación contador visita 3	3	3	OK
+Instalación ingreso al iniciar visita 3	270.00	270.00	OK
+Instalación resultado fallido 3	CANCELADA	CANCELADA	OK
+Instalación jornada cerrada 3	CERRADA	CERRADA	OK
+Instalación cancelada no se reasigna	true	true	OK
+Instalación rechazo sin cargos	80	80.00	OK
+Instalación eléctrica certificada asignar visita 1 no cobra	315.00	315.00	OK
+Instalación eléctrica certificada contador visita 1	1	1	OK
+Instalación eléctrica certificada ingreso al iniciar visita 1	315.00	315.00	OK
+Instalación eléctrica certificada resultado fallido 1	PENDIENTE	PENDIENTE	OK
+Instalación eléctrica certificada jornada cerrada 1	CERRADA	CERRADA	OK
+Instalación eléctrica certificada asignar visita 2 no cobra	315.00	315.00	OK
+Instalación eléctrica certificada contador visita 2	2	2	OK
+Instalación eléctrica certificada ingreso al iniciar visita 2	355.00	355.00	OK
+Instalación eléctrica certificada resultado fallido 2	CANCELADA	CANCELADA	OK
+Instalación eléctrica certificada jornada cerrada 2	CERRADA	CERRADA	OK
+Instalación eléctrica certificada cancelada no se reasigna	true	true	OK
+Instalación eléctrica certificada rechazo sin cargos	40	40.00	OK
+Mantenimiento de aire acondicionado asignar visita 1 no cobra	290.00	290.00	OK
+Mantenimiento de aire acondicionado contador visita 1	1	1	OK
+Mantenimiento de aire acondicionado ingreso al iniciar visita 1	290.00	290.00	OK
+Mantenimiento de aire acondicionado resultado fallido 1	CANCELADA	CANCELADA	OK
+Mantenimiento de aire acondicionado jornada cerrada 1	CERRADA	CERRADA	OK
+Mantenimiento de aire acondicionado cancelada no se reasigna	true	true	OK
+Mantenimiento de aire acondicionado rechazo sin cargos	0	0.00	OK

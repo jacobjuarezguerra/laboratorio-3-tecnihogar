@@ -1,0 +1,221 @@
+@startuml
+skinparam classAttributeIconSize 0
+abstract class Orden {
+  - codigo: String
+  - cliente: String
+  - direccion: String
+  - horas: BigDecimal
+  - zona: Zona
+  - estado: EstadoOrden
+  - visitas: int
+  --
+  # Orden(p1: String, p2: String, p3: String, p4: BigDecimal, p5: Zona)
+  + categoria(): String {abstract}
+  + costo(): BigDecimal {abstract}
+  + diasAtencion(): int {abstract}
+  + limiteVisitas(): int {abstract}
+  + compatible(p1: Cuadrilla): boolean
+  + codigo(): String
+  + cliente(): String
+  + direccion(): String
+  + horas(): BigDecimal
+  + zona(): Zona
+  + estado(): EstadoOrden
+  + visitas(): int
+  ~ asignar(): void
+  ~ retirar(): void
+  ~ iniciarVisita(): void
+  ~ resultado(p1: boolean): void
+  # dinero(p1: BigDecimal): BigDecimal {static}
+  + toString(): String {override}
+}
+class Diagnostico {
+  --
+  + Diagnostico(p1: String, p2: String, p3: String, p4: BigDecimal, p5: Zona)
+  + categoria(): String {override}
+  + costo(): BigDecimal {override}
+  + diasAtencion(): int {override}
+  + limiteVisitas(): int {override}
+}
+class Instalacion {
+  - puntos: int
+  --
+  + Instalacion(p1: String, p2: String, p3: String, p4: BigDecimal, p5: Zona, p6: int)
+  + puntos(): int
+  + horasFacturables(): BigDecimal
+  + categoria(): String {override}
+  + costo(): BigDecimal {override}
+  + diasAtencion(): int {override}
+  + limiteVisitas(): int {override}
+}
+class InstalacionCertificada {
+  - materiales: BigDecimal
+  --
+  + InstalacionCertificada(p1: String, p2: String, p3: String, p4: BigDecimal, p5: Zona, p6: int, p7: BigDecimal)
+  + materiales(): BigDecimal
+  + categoria(): String {override}
+  + costo(): BigDecimal {override}
+  + diasAtencion(): int {override}
+  + limiteVisitas(): int {override}
+}
+class MantenimientoAire {
+  - btu: int
+  --
+  + MantenimientoAire(p1: String, p2: String, p3: String, p4: BigDecimal, p5: Zona, p6: int)
+  + btu(): int
+  + categoria(): String {override}
+  + costo(): BigDecimal {override}
+  + diasAtencion(): int {override}
+  + limiteVisitas(): int {override}
+  + compatible(p1: Cuadrilla): boolean {override}
+}
+class Sistema {
+  - ordenes: Map<String, Orden>
+  - cuadrillas: Map<String, Cuadrilla>
+  - jornadas: Map<String, Jornada>
+  - ingresos: List<Ingreso>
+  --
+  + Sistema()
+  + cotizar(p1: Orden): String
+  + registrar(p1: Orden): void
+  - agregarOrden(p1: Orden, p2: boolean): void
+  + registrarCuadrilla(p1: Cuadrilla): void
+  + crearJornada(p1: String, p2: String): void
+  + asignar(p1: String, p2: String): void
+  + retirar(p1: String, p2: String): void
+  + iniciar(p1: String): void
+  + resultado(p1: String, p2: String, p3: boolean): void
+  + orden(p1: String): Orden
+  + cuadrilla(p1: String): Cuadrilla
+  + jornada(p1: String): Jornada
+  - buscar(p1: Map<String, T>, p2: String, p3: String): <T> T
+  + ordenes(): List<Orden>
+  + cuadrillas(): List<Cuadrilla>
+  + jornadas(): List<Jornada>
+  + ingresos(): List<Ingreso>
+  + total(p1: String): BigDecimal
+  + reporte(): String
+  + conDatosIniciales(): Sistema {static}
+}
+class Jornada {
+  - codigo: String
+  - cuadrilla: Cuadrilla
+  - ordenes: List<Orden>
+  - resultados: Set<String>
+  - estado: EstadoJornada
+  --
+  ~ Jornada(p1: String, p2: Cuadrilla)
+  + codigo(): String
+  + cuadrilla(): Cuadrilla
+  + estado(): EstadoJornada
+  + ordenes(): List<Orden>
+  + horasAsignadas(): BigDecimal
+  + disponible(): BigDecimal
+  ~ asignar(p1: Orden): void
+  ~ retirar(p1: Orden): void
+  ~ iniciar(): void
+  ~ resultado(p1: Orden, p2: boolean): void
+  + toString(): String {override}
+}
+class Cuadrilla {
+  - codigo: String
+  - capacidad: BigDecimal
+  - certificada: boolean
+  --
+  + Cuadrilla(p1: String, p2: BigDecimal, p3: boolean)
+  + codigo(): String
+  + capacidad(): BigDecimal
+  + certificada(): boolean
+  + toString(): String {override}
+}
+class Ingreso {
+  - orden: String
+  - categoria: String
+  - concepto: String
+  - monto: BigDecimal
+  --
+  + Ingreso(p1: String, p2: String, p3: String, p4: BigDecimal)
+  + toString(): String
+  + hashCode(): int
+  + equals(p1: Object): boolean
+  + orden(): String
+  + categoria(): String
+  + concepto(): String
+  + monto(): BigDecimal
+}
+class Main {
+  - entrada: Scanner
+  - sistema: Sistema
+  --
+  + Main()
+  - leer(p1: String): String
+  - entero(p1: String): int
+  - decimal(p1: String): BigDecimal
+  - si(p1: String): boolean
+  - leerOrden(): Orden
+  - ejecutar(): void
+  + main(p1: String[]): void {static}
+}
+class Validacion {
+  --
+  - Validacion()
+  ~ texto(p1: String, p2: String): String {static}
+  ~ positivo(p1: BigDecimal, p2: String): BigDecimal {static}
+  ~ exigir(p1: boolean, p2: String): void {static}
+}
+enum Zona {
+  + METROPOLITANA: Zona {static}
+  + PERIFERICA: Zona {static}
+  - tarifaBase: BigDecimal
+  --
+  + values(): Zona[] {static}
+  + valueOf(p1: String): Zona {static}
+  - Zona(p1: String)
+  + tarifaBase(): BigDecimal
+}
+enum EstadoOrden {
+  + PENDIENTE: EstadoOrden {static}
+  + ASIGNADA: EstadoOrden {static}
+  + EN_ATENCION: EstadoOrden {static}
+  + COMPLETADA: EstadoOrden {static}
+  + CANCELADA: EstadoOrden {static}
+  --
+  + values(): EstadoOrden[] {static}
+  + valueOf(p1: String): EstadoOrden {static}
+  - EstadoOrden()
+}
+enum EstadoJornada {
+  + PREPARACION: EstadoJornada {static}
+  + EN_CURSO: EstadoJornada {static}
+  + CERRADA: EstadoJornada {static}
+  --
+  + values(): EstadoJornada[] {static}
+  + valueOf(p1: String): EstadoJornada {static}
+  - EstadoJornada()
+}
+Orden <|-- Diagnostico
+Orden <|-- Instalacion
+Instalacion <|-- InstalacionCertificada
+Orden <|-- MantenimientoAire
+Sistema "1" *-- "0..*" Orden
+Sistema "1" *-- "0..*" Cuadrilla
+Sistema "1" *-- "0..*" Jornada
+Sistema "1" *-- "0..*" Ingreso
+Jornada "0..*" --> "1" Cuadrilla
+Jornada "0..*" --> "0..*" Orden : historial
+Main "1" --> "1" Sistema
+Orden --> Zona
+Orden --> EstadoOrden
+Jornada --> EstadoJornada
+MantenimientoAire ..> Cuadrilla : compatible
+Sistema ..> Validacion
+Orden ..> Validacion
+Cuadrilla ..> Validacion
+Jornada ..> Validacion
+Main ..> Validacion
+note right of Jornada : asignar pregunta Orden.compatible(cuadrilla)
+Solo una asignacion activa por orden.
+note right of Sistema : iniciar registra Q40 por orden con visitas > 1
+solo despues de iniciar correctamente la jornada.
+note bottom of Cuadrilla : Como maximo una jornada sin cerrar.
+@enduml
