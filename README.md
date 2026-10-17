@@ -13,6 +13,12 @@ java -cp out tecnihogar.Main
 
 En una terminal de Windows, si los acentos no se muestran bien, use `chcp 65001` antes de ejecutar. Los importes y horas decimales se ingresan con punto, sin separadores de miles; por ejemplo, `2000.50`.
 
+La carpeta `bin/` incluye los archivos compilados compatibles con Java 17 o posterior. Para ejecutar directamente sin compilar:
+
+```powershell
+java -cp bin tecnihogar.Main
+```
+
 ## Uso
 
 El menú permanece disponible hasta elegir `0`. Las opciones 1 y 2 permiten cotizar y registrar las cuatro categorías. La opción 2 muestra la cotización y solicita aceptar el pago (`s`) antes de registrar. Una cotización o una respuesta `n` no registra ni cobra nada.
@@ -39,3 +45,4 @@ La suite ejecuta 118 comprobaciones con aserciones propias (no necesita `-ea`). 
 `Jornada` valida capacidad, compatibilidad y estado antes de modificar órdenes. `Sistema` conserva las colecciones y el libro de ingresos; registra Q40 por visita adicional únicamente después de iniciar correctamente la jornada. Los montos usan `BigDecimal` y redondeo monetario HALF_UP a dos decimales.
 
 El PDF de la carpeta `documentacion` incluye análisis, estados, catálogo de clases, diagramas UML y evidencia de las pruebas. El archivo `diseno.puml` contiene el diagrama editable; el PDF ya lleva los diagramas incorporados y no depende de un enlace.
+
